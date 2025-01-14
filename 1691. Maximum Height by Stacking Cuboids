@@ -1,0 +1,51 @@
+class Solution {
+public:
+    bool check(vector<int> base, vector<int> newbox){
+        if(newbox[0] <= base[0] && newbox[1] <= base[1] && newbox[2] <= base[2]){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    int solve(vector<vector<int>>& cuboids) {
+
+        int n = cuboids.size();
+        // vector<int>ans;
+
+        vector<int>currrow(n+1, 0);
+        vector<int>nextrow(n+1, 0);
+
+        // ans.push_back(cuboids[0]);
+
+        for(int curr = n-1; curr>=0; curr--){
+            for(int prev = curr-1; prev>= -1; prev--){
+
+                int include =0;
+                if(prev == -1 || check(cuboids[curr] , cuboids[prev])){
+                    include =  cuboids[curr][2] + nextrow[curr+1]; // yaha pe height badhay hai
+                }
+                int exclude = 0 + nextrow[prev+1];
+               currrow[prev+1] = max(include, exclude);
+            }
+         nextrow = currrow;
+       }
+       return nextrow[0];
+    }
+
+    int maxHeight(vector<vector<int>>& cuboids) {
+        // step 1 sort kardeya sare cuboida ko 
+        for(auto &a: cuboids){
+            sort(a.begin(), a.end());
+        }
+        // step2 sort kardo bases on width  or leangth all cuboida 
+        sort(cuboids.begin(), cuboids.end());
+
+        // step 3 use Largest increasing subsequence logic
+        return solve(cuboids);
+
+
+
+
+    }
+};
