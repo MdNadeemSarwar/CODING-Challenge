@@ -11,7 +11,7 @@ public:
             while(index < n && s[index] != ' '){
                 s[curr] = s[index];
                 curr++;
-                index++; 
+                index++;
             }
             if(prev < curr){
                 reverse(s.begin()+prev, s.begin()+curr);
