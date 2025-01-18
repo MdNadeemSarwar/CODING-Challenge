@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+
+    // yaha pe roman ka rule ke hesab se kam hoga roman number kayse banta hai
+    // agar 1st element bada hai 2nd chota haito add kardo ex->  V I = 5 + 1 = 6
+    //agar 1st chota hai or 2nd bara haito minus kardu ex->  I V = 1 - 5 = 4
+    // or hame to pata nahi hoga ki V bada haiki I isleye ham map ka use karke uske value se compare karenge 
+    // maps unorder wala me char or int banaunga q ki aap s ki value char hi nekal rahe honge
+
+
+    unordered_map<char, int> maps;
+    maps = {
+        {'I',1},
+        {'V',5},
+        {'X',10},
+        {'L',50},
+        {'C',100},
+        {'D',500},
+        {'M',1000}  
+    };
+   int ans =0;
+
+   for(int i=0; i<s.size(); i++){
+        if(maps[s[i]] < maps[s[i+1]]){
+            ans = ans -  maps[s[i]];
+        }
+        else{
+            ans = ans + maps[s[i]];
+        }
+    }
+    return ans;
+
+
+    }
+};
