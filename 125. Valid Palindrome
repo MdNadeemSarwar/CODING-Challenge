@@ -22,7 +22,6 @@ public:
                     end--;
                 }
             }
-  
         }
         return true;
     
