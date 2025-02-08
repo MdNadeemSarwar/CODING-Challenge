@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int findComplement(int num) {
+
+        if(num==0){
+            return 1;
+        }
+        int length = log2(num) + 1; 
+        int helper = (1U << length) - 1;
+        return num ^ helper;
+        
+
+    }
+};
