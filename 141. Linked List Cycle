@@ -1,5 +1,5 @@
 
-// using the map Approach time complexity o(n) hai 
+// using the map Approach TC -> O(N) and SC -> O(N) 
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
@@ -18,7 +18,7 @@ public:
         return false;
     }
 };
------------------------------------------------------ TC -> O(1)
+----------------------------------------------------- TC -> O(N) and SC -> O(1) ---------------------
 
 class Solution {
 public:
