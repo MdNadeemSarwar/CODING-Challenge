@@ -1,3 +1,5 @@
+
+// using the map Approach time complexity o(n) hai 
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
