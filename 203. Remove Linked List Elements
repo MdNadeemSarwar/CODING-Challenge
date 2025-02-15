@@ -1,0 +1,24 @@
+ if(head == NULL){
+            return NULL;
+        }
+
+        ListNode* dle;
+
+        while(head != NULL && head->val == val){
+            dle = head;
+            head= head->next;
+            delete(dle);
+        }
+
+        ListNode* temp = head;
+        while(temp != NULL && temp->next != NULL){
+            if(temp->next->val == val){
+                dle = temp->next;
+                temp->next= temp->next->next;
+                delete(dle);
+            }
+            else{
+                temp = temp->next;
+            }
+        }
+        return head;
