@@ -1,0 +1,6 @@
+ void deleteNode(ListNode* node) {
+        node->val = node->next->val; // caopy the next node value
+        ListNode* temp = node->next; // point this node where we nead to remove
+        node->next = node->next->next; // point the right node skip the next node
+        delete(temp); // delete the next node
+    }
