@@ -1,0 +1,77 @@
+----------------------------------------------Recursive Approcah -------------------------------------------------- TC = O(N) or SC= O(N)
+class Solution {
+public:
+// 1 condion haiki agar length kam hai k seto aage ka reverse mat karna
+
+int length(ListNode* head){
+    int count = 0;
+    ListNode* temp = head;
+    while(temp != NULL){
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
+    ListNode* reverseKGroup(ListNode* head, int k) {  
+        int len = length(head);
+        //step1 first k Node ko iterative tareke se reverse kardo
+        if(head == NULL || len < k){
+            return head;
+        }
+
+        int count =0;
+        ListNode* forw = NULL;
+        ListNode* curr = head;
+        ListNode*  prev = NULL;
+
+        while(curr != NULL && count < k){
+            forw = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = forw;
+            count++;
+        }
+        
+        // step 2 recursion karke layega aage ka sara
+        if(forw != NULL){
+            head->next = reverseKGroup(forw, k);
+        }
+
+        // return karna hai head of linkedi list jo ki prev hota hai 
+        return prev;
+
+    }
+};
+ --------------------------------------2nd Apprachh with same time complexity ke sath ---------------------
+
+class Solution {
+public:
+    ListNode* reverseKGroup(ListNode* head, int k) {
+
+        ListNode* temp = head;
+        for(int i=0; i<k; i++){
+            if(temp == NULL){
+                return head;
+            }
+            temp = temp->next;
+        }
+        
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+        ListNode* forw = NULL;
+        int count = 0;
+
+        while(curr != NULL && count < k){
+            forw = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = forw;
+            count++;
+        }
+
+        if(forw != NULL){
+            head-> next = reverseKGroup(forw, k);
+        }
+        return prev;
+    }
+};
