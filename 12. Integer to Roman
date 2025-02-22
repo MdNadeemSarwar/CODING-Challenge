@@ -21,7 +21,6 @@ public:
        };
 
        for(int i=0; i<store.size(); i++){
-
         while(num >= store[i].first){
             ans = ans + store[i].second;
             num = num - store[i].first;
