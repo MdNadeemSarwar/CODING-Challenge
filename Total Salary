@@ -1,0 +1,32 @@
+#include <bits/stdc++.h> 
+#include <iostream>
+using namespace std;
+
+int main() {
+    int base;
+    char grade;
+    cin>>base>>grade;
+
+    double hra = 0.20*base;
+    double da = 0.50*base;
+    double allow;
+    if(grade == 'A'){
+        allow = 1700;
+    }
+    else if(grade == 'B'){
+        allow = 1500;
+    }
+    else{
+        allow = 1300;
+    }
+
+    double pf = 0.11*base;
+
+    double salary = base + hra + da + allow - pf;
+    int totalsalary = roundf(salary);
+    cout<< totalsalary;
+
+
+
+    return 0;
+}
