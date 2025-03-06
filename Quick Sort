@@ -1,0 +1,43 @@
+#include <bits/stdc++.h> 
+int pivot(vector<int>& arr, int start, int end){
+    int expivot = arr[start];
+    int count = 0;
+    for(int i=start+1; i<=end; i++){
+        if(arr[i] <= expivot){
+            count++;
+        }
+    }
+    int pivotindex = start + count;
+    swap(arr[pivotindex], arr[start]);
+    int i= start; int j = end;
+
+    while(i< pivotindex && j > pivotindex){
+        while(arr[i] <= expivot){
+            i++;
+        }
+        while(arr[j] > expivot){
+            j--;
+
+        }
+        if(i< pivotindex && j> pivotindex){
+            swap(arr[i++], arr[j--]);
+        }
+    }
+    return pivotindex;
+}
+void solve(vector<int>& arr, int start, int end){
+    if(start >= end){
+        return;
+    }
+    int p = pivot(arr, start, end);
+    solve(arr, start, p-1); // left side keleye
+    solve(arr, p+1, end); // right side keleye 
+}
+vector<int> quickSort(vector<int> arr)
+{
+  int start = 0;
+  int end = arr.size()-1;
+  solve(arr, start, end);
+  return arr;
+
+}
