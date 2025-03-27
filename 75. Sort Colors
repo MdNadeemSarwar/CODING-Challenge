@@ -12,6 +12,7 @@ public:
                     mini = j;
                 }
             }
+
             swap(nums[mini], nums[i]);
         }
     }
