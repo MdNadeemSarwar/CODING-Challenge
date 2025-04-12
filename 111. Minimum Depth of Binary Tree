@@ -16,5 +16,6 @@ public:
         int ans =  min(left , right) + 1;
 
         return ans;
+
     }
 };
