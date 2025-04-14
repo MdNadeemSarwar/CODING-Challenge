@@ -7,6 +7,6 @@ public:
         }
        int l = log2(n) + 1; // Calculate the number of bits in the binary representation
         int helper = (1 << l) - 1; // Create a number with all bits set to 1
-        return helper ^ n; // XOR with num to get the complement   
+        return helper ^ n; // XOR with num to get the complement
     }
 };
