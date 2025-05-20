@@ -1,0 +1,24 @@
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+      int mini = *min_element(nums.begin(), nums.end());
+      int maxi = *max_element(nums.begin(), nums.end());
+
+      int range = maxi - mini + 1;
+      vector<int>arr(range, 0);
+
+      for(int i=0; i<nums.size(); i++){
+        int fre = nums[i] - mini;
+        arr[fre]++;
+      }
+
+      int indx =0;
+      for(int i=0; i<range; i++){
+        while(arr[i] > 0){
+            nums[indx++] = i + mini;
+            arr[i]--;
+        }
+      }
+
+    }
+};
