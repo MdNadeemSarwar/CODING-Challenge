@@ -21,7 +21,6 @@ public:
     };
    int ans =0;
 
-
    for(int i=0; i<s.size(); i++){
         if(maps[s[i]] < maps[s[i+1]]){
             ans = ans -  maps[s[i]];
