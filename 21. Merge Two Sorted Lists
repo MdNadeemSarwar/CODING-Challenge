@@ -1,0 +1,73 @@
+-------------------------------------------------------------------------------------------
+
+Part 1 Arry me convert karne ke use karna
+
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        vector<int>dabba;
+
+        ListNode* temp1 = list1;
+        ListNode* temp2 = list2;
+
+        while(temp1 != NULL){
+            dabba.push_back(temp1->val);
+            temp1 = temp1->next;
+        }
+
+        while(temp2 != NULL){
+            dabba.push_back(temp2->val);
+            temp2 = temp2->next; 
+
+        }
+
+        // sort kardeya array ko 
+        sort(dabba.begin(), dabba.end());
+
+        ListNode* dummy = new ListNode(0);
+        ListNode* newnode = dummy;
+
+        for(int x: dabba){
+            newnode -> next = new ListNode(x);
+            newnode = newnode->next;
+        }
+        return dummy->next;
+    }
+};
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+        if(list1 == NULL  || list2 == NULL){
+            return (list1 == NULL) ? list2 : list1;
+        }
+
+        ListNode* dummy = new ListNode(0);
+        ListNode* temp = dummy;
+
+        while(list1 != NULL && list2 != NULL){
+            if(list1->val < list2->val){
+                temp->next = list1;
+                list1 =list1->next;
+            }
+            else{
+                temp->next = list2;
+                list2 = list2->next;
+            }
+            temp = temp->next;
+        }
+
+        if(list1 != NULL){
+            temp->next = list1;
+            list1 =list1->next;
+        }
+
+        if(list2 != NULL){
+            temp->next = list2;
+            list2 =list2->next;
+        }
+
+        return dummy->next;
+    }
+};
