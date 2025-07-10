@@ -1,6 +1,31 @@
 class Solution {
 public:
     int findComplement(int num) {
+        int mask = 0;
+        int temp = num;
+
+        if(num == 0){  // ye 0 complement ka 1 hi aata hai bits q ki 0 ko ulta karoge to 1 hi melega isleye ye base typa ka smajh lo 
+            return 1;
+        }
+
+        while(temp > 0){ // yaha pe jab tal temp 0 se bara hai karo jaoo  
+            mask = (mask << 1) | 1;  // mask 0000 oga left shift karne pe hi abhi itha hi hoga 1st otratio me then 1 ke sath or karo 0000
+                                                                                                                                     0001
+                                                                                                                                   -------
+                                                                                                                                     0001
+       // yani aab mask =1 hoagay
+            temp = temp >> 1;
+        }
+        return mask ^ num;
+    }
+};
+
+----------------------------------------------------------------------------------------
+// agar STL function use karne deya to ye best hai lekin agar nahi deya to upar wala use karna hai 
+TC- O(1) SP dono ka sam hei 
+class Solution {
+public:
+    int findComplement(int num) {
 
         if(num==0){
             return 1;
