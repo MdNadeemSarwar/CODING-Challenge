@@ -1,8 +1,17 @@
+Sliding Window ka comcept laga do bas 
+// naya element window me add
+//jab window ready ho jaye 
+// max sum update karo 
+// purana element hatao
+TC-> O(N)
+SC-> O(1)
+
+
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {
 
-     int maxsum = INT_MIN;
+     int maxsum = INT_MIN; // 1 edgee case keleye yaha pe int max likha hu nahi to 0 hota lekin -1 wale case me phas raha tha isleey 
      int winsum = 0;
      int start = 0;
 
