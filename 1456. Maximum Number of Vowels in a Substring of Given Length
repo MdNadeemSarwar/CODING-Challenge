@@ -1,0 +1,28 @@
+Tc-> O(n)
+Sc-> O(1)
+
+class Solution {
+public:
+    int maxVowels(string s, int k) {
+        int window = 0;
+        int maxlen = 0;
+        unordered_set<char>vowel={'a','e','i','o','u'};
+
+        for(int i=0; i<s.size(); i++){
+
+            if(vowel.count(s[i])){
+                window++;
+            }
+
+            if(i >= k){
+                if(vowel.count(s[i-k])){
+                    window--;
+                }
+            }
+            maxlen = max(maxlen, window);
+        }
+        return maxlen;
+
+
+    }
+};
