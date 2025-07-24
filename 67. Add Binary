@@ -1,0 +1,25 @@
+1 by 1 karke string se nkelao dono digit + carry ko sum kardo or ye bas divided by 2 kardo iska carry mel jayega or mod % by 2 kardo tke iska Divide by 2 (kyunki binary base 2 hota hai) 0 or 1 
+or deciam  ke case me Divide by 10 (kyunki binary base 10 hota hai) hai isleye yaha pe % 2 or / 2 hoga same q no 415 bhi same hi hai 
+
+TC-> O(max(N / M))
+SC-> O(1)
+
+class Solution {
+public:
+    string addBinary(string a, string b) {
+        int i = a.size()-1;
+        int j = b.size()-1;
+        int carry = 0;
+        string ans = "";
+
+        while(i>=0 || j >= 0 || carry >0){
+            int digit1 = (i>=0) ? (a[i--] - '0') : 0;
+            int digit2 = (j>=0) ? (b[j--] - '0') : 0;
+
+            int sum = digit1 + digit2 + carry;
+            carry = (sum / 2);
+            ans = to_string(sum % 2) + ans; 
+        }
+        return ans;
+    }
+};
