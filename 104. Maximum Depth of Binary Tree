@@ -1,3 +1,10 @@
+
+TC-> O(N)  har node exactly ek baar visit hota hai.
+SC-> O(log N)  Worst case O(h) recursion stack, jahan h = height of tree. Skewed tree (linked-list type): O(n) Balanced tree: O(log n)
+
+Jab ham ekdam child leaf pe hote haito uske left or right ne kuch naho hota haina wo technicla root == null hota haito return 0 karta hai or us child leaf ke right mese bhi 0 deta hai
+to ham isee int ans = max(left, right) + 1; -> (0 ,0) + 1 = 1 ho jata haito leaf node 1 return karta hai upar wale ko 
+
 int maxDepth(TreeNode* root) {
 
         if(root == NULL){
