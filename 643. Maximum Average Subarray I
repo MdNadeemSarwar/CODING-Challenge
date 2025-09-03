@@ -6,7 +6,6 @@ Sliding Window ka comcept laga do bas
 TC-> O(N)
 SC-> O(1)
 
-
 class Solution {
 public:
     double findMaxAverage(vector<int>& nums, int k) {
