@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+      unordered_set<int>set;
+      int ans = 0;
+      for(auto x: nums){
+        if(set.count(x)){
+            ans = x;
+        }
+        else{
+            set.insert(x);
+        }
+      }
+      return ans;  
+    }
+};
