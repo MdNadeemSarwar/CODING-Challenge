@@ -1,0 +1,59 @@
+is array me agar duplicate haito true dedo nahi to false de do 
+TC= O(N)2
+SC= O(1)
+TLE dega
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+     for(int i=0; i<nums.size(); i++){
+        int digit = nums[i];
+        for(int j= i+1; j<nums.size(); j++){
+            if(digit == nums[j]){
+                return true;
+            }
+        }
+     }
+     return false;   
+    }
+};
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+aab agar hame 2 loop se 1 loop me lena haito yato sort kardo then 1 loop se 2 value check karlo agar barabar haito thik true de de nahoi to false
+
+TC= O(N log N) because sorting keye the 
+SC= O(1)
+Or size nums.size() -1 karna q ki ye aage wale indexz ko axxes kardega Loop i < nums.size() tak chal raha hai. Jab i = nums.size()-1 hoga, tab tum nums[i+1] access karoge → out of bounds ho jayega 🚨
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+
+        for(int i=0; i<nums.size()-1; i++){
+            if(nums[i] == nums[i+1]){
+                return true;
+            }
+        }
+        return false;
+    }
+};
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+TC= O(N) Becase unordered_Set use karenge isme searching or insertion o(1) leta hai lekin n emenet haito o(n) jayega space bhi or tc bji
+SC= O(N)
+
+class Solution {
+public:
+    bool containsDuplicate(vector<int>& nums) {
+     unordered_set<int>set;
+     for(auto x : nums){
+        if(set.count(x)){
+            return true;
+        }
+        else{
+            set.insert(x);
+        }
+     }
+     return false;
+    }
+};
