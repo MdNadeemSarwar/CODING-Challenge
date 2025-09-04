@@ -1,3 +1,9 @@
+tc= o(n)
+sc= o(1)
+
+👉 Agar if wali condition true ho gayi na,
+to baad ka else if ya else bilkul bhi nahi chalega. pahle if wale chale agar wo nahi chale to if else wale chaleega wo bhi nahi chale to last me else to hi hai
+
 class Solution {
 public:
     bool isPalindrome(string s) {
