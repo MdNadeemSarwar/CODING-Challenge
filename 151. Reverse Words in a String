@@ -1,3 +1,6 @@
+Time Complexity: O(n) (pure string + har word reverse)
+Space Complexity: O(1) (in-place hi ho raha hai)
+
 class Solution {
 public:
     string reverseWords(string s) {
