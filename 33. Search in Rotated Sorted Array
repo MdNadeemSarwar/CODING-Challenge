@@ -1,0 +1,61 @@
+Step 1: Samajhna rotation
+Normal sorted array hota:
+[0, 1, 2, 4, 5, 6, 7]
+
+Rotate karke ho gaya:
+[4, 5, 6, 7, 0, 1, 2]
+Dekho, array ab bhi 2 sorted parts me divide hai:
+
+Left sorted part → [4, 5, 6, 7]
+Right sorted part → [0, 1, 2]
+
+Step 2: Binary Search ka twist
+Har mid point pe hume decide karna hoga ki kaunsa half sorted hai, kyunki ek half hamesha sorted hi hota hai.
+Agar nums[start] <= nums[mid] → iska matlab left half sorted hai.
+Nahi to → right half sorted hai.
+Ab check karo target kis half me aa sakta hai, aur us half me binary search jaari rakho.
+
+Step 3: Algorithm (logic)
+start = 0, end = n-1
+Jab tak start <= end:
+mid = (start + end) / 2
+Agar nums[mid] == target → return mid.
+Agar left sorted hai (nums[start] <= nums[mid]):
+Agar target left range me hai (nums[start] <= target < nums[mid]) → end = mid - 1
+Warna → start = mid + 1
+Agar right sorted hai:
+Agar target right range me hai (nums[mid] < target <= nums[end]) → start = mid + 1
+Warna → end = mid - 1
+Agar loop khatam ho gaya → return -1.
+
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+       int start = 0;
+       int end = nums.size()-1;
+
+       while(start <= end){
+        int mid = start +  (end - start)/2;
+
+        if(nums[mid] == target){
+            return mid;
+        }
+
+        if(nums[start] <= nums[mid]){
+            if(nums[start] <= target && target <= nums[mid]){
+                end = mid - 1;
+            }
+            else{
+                start = mid + 1;
+            }
+        }
+        else if(nums[mid] <= target && target <= nums[end]){
+                start = mid + 1;
+            }
+            else{
+                end = mid -1;
+            }
+       }
+       return -1; 
+    }
+};
