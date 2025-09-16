@@ -1,1 +1,23 @@
+class Solution {
+public:
+    vector<int> sortArray(vector<int>& nums) {
+        int maxs = *max_element(nums.begin(), nums.end());
+        int mins = *min_element(nums.begin(), nums.end());
+        int range = maxs - mins + 1;
+        vector<int>arr(range, 0);
 
+        for(int i=0; i<nums.size(); i++){
+            int index = nums[i] - mins;
+            arr[index]++;
+        }
+
+        int idx = 0;
+        for(int i=0; i<range; i++){
+            while(arr[i] > 0){
+                nums[idx++] = i + mins;
+                arr[i]--;
+            }
+        }
+        return nums;
+    }
+};
