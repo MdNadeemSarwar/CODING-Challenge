@@ -1,6 +1,17 @@
 1 by 1 karke string ke andar se 1 digit nekalo dono ka or dono ka jor do then carry bhi jorde or jab deciam l nekalenge ge to ans ko % karke uka last element dal do or 1st element keleye divie karke carry me daldo
 direct string me hi dalde chale jao or add karte chale jao ye character ke tarah checpakta chalaa jayega
 
+class Solution {
+public:
+    string addStrings(string num1, string num2) {
+        int a = stoi(num1);
+        int b = stoi(num2);
+        int sum = a + b;
+        return to_string(sum);
+    }
+};
+
+--------------------------------------------------------------------------------------------
 Tc-> O(Max(N/ M)
 SC-> O(1)
 
