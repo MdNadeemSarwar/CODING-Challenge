@@ -1,0 +1,48 @@
+Approach (Optimal)
+We can solve this recursively:
+Write a function to calculate height.
+During height calculation, check if the subtree is balanced.
+If any subtree is not balanced, propagate a failure.
+Trick: Use -1 to indicate subtree is not balanced.
+
+✅ Time Complexity: O(N) → Each node visited once
+✅ Space Complexity: O(H) → Recursion stack (H = tree height)
+
+dekho agar left sabtreee ka height or right sabtree ke height me 1 se jada ka diffrece ho gaay to return -1 kardo return -1 matlab unbilance hai isleye 
+or ye bhi kar shakte ho ki agar jab left == -1 ho hoi gaya haito aage chech karne se faida nahi hai  if(left == -1) return -1; isleye ye kardo right ke bhi sath 
+or jo height calculate karna ka tareka hai wo karte jao jayse karte ho 
+
+class Solution {
+public:
+    int height(TreeNode* root){
+
+        if(root == NULL){
+            return 0;
+        }
+        
+        int left = height(root->left);
+        if(left == -1){
+            return -1;
+        }
+
+        int right = height(root->right);
+        if(right == -1){
+            return -1;
+        }
+
+        if(abs(left - right) > 1){
+            return -1;
+        }
+        return max(left, right) + 1;
+    }
+
+    bool isBalanced(TreeNode* root) {
+        int ans = height(root);
+
+        if(ans == -1){
+            return false;
+        }
+        return true;
+        
+    }
+};
