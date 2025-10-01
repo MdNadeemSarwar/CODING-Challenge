@@ -1,0 +1,74 @@
+Step 1: Prefix Sum ka Concept
+Prefix sum matlab: “ab tak ka sum”
+prefix[i] = arr[0] + arr[1] + ... + arr[i]
+Agar hum subarray ka sum chahte hain arr[l..r] ka:
+sum(l..r) = prefix[r] - prefix[l-1]  (agar l>0)
+sum(0..r) = prefix[r]                 (agar l=0)
+
+Step 2: Odd/Even ka Magic Bhai, number ke odd/even rules yaad rakh:
+Case	Result
+even - even	even
+odd - odd	even
+even - odd	odd
+odd - even	odd
+
+✅ Matlab, agar tumhare paas current prefixSum aur previous prefixSum ka difference lete ho, to uska odd/even subarray sum ka decide karega.
+
+Step 3: Kaise kaam karta hai
+Ab tak ke prefix sums ko oddCount aur evenCount me track karte hain.
+Logic:
+Agar current prefixSum odd hai → uske saath jitne even prefix sums pehle aaye, unke difference odd hoga → number of odd subarrays = evenCount
+Agar current prefixSum even hai → uske saath jitne odd prefix sums pehle aaye, unke difference odd hoga → number of odd subarrays = oddCount
+Ye simple hai: odd - even = odd, even - odd = odd
+
+Step 4: Step by Step Example [1,2,3]
+Initial:
+oddCount = 0, evenCount = 1 (empty prefix sum)
+prefixSum = 0, result = 0
+
+num = 1
+prefixSum = 0 + 1 = 1 (odd)
+odd - previous even → odd subarray → result += evenCount = 1
+oddCount++ → oddCount = 1
+
+num = 2
+prefixSum = 1 + 2 = 3 (odd)
+odd - previous even → result += evenCount = 2
+oddCount++ → oddCount = 2
+
+num = 3
+prefixSum = 3 + 3 = 6 (even)
+even - previous odd → result += oddCount = 4
+evenCount++ → evenCount = 2
+
+✅ Total odd sum subarrays = 4
+Bhai, short me:
+Even prefix sum + odd prefix sum difference = odd subarray sum
+Odd prefix sum + even prefix sum difference = odd subarray sum
+Ye hi prefix sum + odd/even counting trick ka pura logic hai.
+
+class Solution {
+public:
+    int numOfSubarrays(vector<int>& arr) {
+        const int MOD = 1e9 + 7;
+        int prefixsum = 0;
+        int evencount = 1;
+        int oddcount = 0;
+        int ans =0;
+
+        for(int num : arr){
+            prefixsum += num;
+
+            if(prefixsum % 2 == 0){
+                ans = (ans + oddcount) % MOD;
+                evencount++;
+            }
+            else{
+                ans = (ans + evencount) % MOD;
+                oddcount++;
+            }
+        }
+        return ans;
+
+    }
+};
