@@ -1,0 +1,41 @@
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        // mid nekalo
+        // us mid ke aage  wale ko reverwe keye 
+        // then compare karo 
+
+        ListNode* slow = head;
+        ListNode* fast = head;
+
+        while(fast != NULL && fast->next != NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        ListNode* curr = slow;
+        ListNode* prev = NULL;
+        ListNode* forw = NULL;
+
+        while(curr != NULL){
+            forw = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = forw;
+        }
+
+        ListNode* first = head;
+        ListNode* second = prev;
+
+        while(second != NULL){
+            if(first->val != second->val){
+                return false;
+            }
+            else{
+                first = first -> next;
+                second = second -> next;
+            }
+        }
+        return true;
+    }
+};
