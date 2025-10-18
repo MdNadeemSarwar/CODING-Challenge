@@ -43,7 +43,6 @@ Window me max 2 alag fruits allowed.
 Jaise hi 3rd fruit aata hai → window ko chhota karo (pehle wale tree chhodo).
 Fir dekhte raho maximum lambi window kitni ban sakti hai.
 
-
 class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
