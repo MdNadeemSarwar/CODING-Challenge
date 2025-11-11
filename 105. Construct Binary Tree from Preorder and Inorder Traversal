@@ -1,3 +1,32 @@
+Ek mini dry run se samjho 👇
+preorder = [3,9,20,15,7]
+inorder  = [9,3,15,20,7]
+
+Root = 3
+Inorder me 3 ka index = 1
+
+Left → start=0, end=0 (sirf [9])
+Right → start=2, end=4 ([15,20,7])
+
+Left subtree call: (start=0, end=0)
+Root = 9
+Inorder me 9 ka index = 0
+Left → start=0, end=-1 → return NULL
+
+Right → start=1, end=0 → return NULL
+✅ Done.
+
+Right subtree call: (start=2, end=4)
+Root = 20
+Inorder me 20 ka index = 3
+
+Left → start=2, end=2 ([15])
+Right → start=4, end=4 ([7])
+✅ Done.
+
+
+
+
 class Solution {
 public:
     TreeNode* solve(vector<int>& preorder,vector<int>& inorder, int &pre, int start, int end, int size){
